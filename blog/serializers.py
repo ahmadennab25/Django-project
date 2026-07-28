@@ -1,8 +1,5 @@
 from rest_framework import serializers
-from .models import User, Category, Post, Comment
-
-from rest_framework import serializers
-from .models import User, Category, Post, Comment
+from .models import User, Post, Comment
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -11,21 +8,10 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ['id', 'name', 'phone_number', 'is_active', 'created_at']
 
 
-class CategorySerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Category
-        fields = '__all__'
-
-
-# POST SERIALIZER - two ways to choose the fields
 class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
         fields = '__all__'
-        # ---
-        # CUSTOMISED WAY: list exactly the fields you want
-        # fields = ['id', 'title', 'content', 'author',
-        #           'category', 'is_published', 'created_at']
 
 
 class CommentSerializer(serializers.ModelSerializer):

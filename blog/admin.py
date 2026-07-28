@@ -1,7 +1,7 @@
 #from django.contrib import admin
 #from .models import  Post
 from django.contrib import admin
-from .models import User, Category, Post, Comment
+from .models import User, Post, Comment
 
 
 # ModelAdmin fits - NOT the auth UserAdmin.
@@ -12,17 +12,11 @@ class UserAdmin(admin.ModelAdmin):
     list_filter = ('is_active', 'created_at')
 
 
-@admin.register(Category)
-class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name')
-    search_fields = ('name',)
-
-
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title', 'user', 'category', 'is_published', 'created_at')
-    search_fields = ('title', 'user__name', 'category__name')
-    list_filter = ('is_published', 'category', 'created_at')
+    list_display = ('id', 'title', 'user', 'is_published', 'created_at')
+    search_fields = ('title', 'user__name')
+    list_filter = ('is_published', 'created_at')
 
 
 @admin.register(Comment)

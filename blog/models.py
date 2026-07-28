@@ -1,6 +1,8 @@
 from django.db import models
 from django.db import models
 
+from django.db import models
+
 
 class User(models.Model):
     name = models.CharField(max_length=255)
@@ -13,24 +15,10 @@ class User(models.Model):
         return self.name
 
 
-class Category(models.Model):
-    name = models.CharField(max_length=100)
-
-    def __str__(self):
-        return self.name
-
-
 class Post(models.Model):
     user = models.ForeignKey(
         User,
         on_delete=models.SET_NULL,   # keep the post even if the user is gone
-        related_name='posts',
-        null=True,
-        blank=True,
-    )
-    category = models.ForeignKey(
-        Category,
-        on_delete=models.SET_NULL,   # keep the post even if its category is gone
         related_name='posts',
         null=True,
         blank=True,
