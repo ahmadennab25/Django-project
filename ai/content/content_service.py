@@ -2,7 +2,7 @@ from .content_client import ContentClient
 
 
 MAX_CONTENT_LENGTH = 500
-
+MIN_INPUT_LENGTH = 20  
 
 def _build_generate_prompt(title, tone=None):
     """
@@ -55,6 +55,9 @@ def summarize_post(post_content):
     # ---- 1. Input validation ----
     if not post_content or not post_content.strip():
         raise ValueError("Post content cannot be empty.")
+
+    if len(post_content.strip()) < MIN_INPUT_LENGTH:
+        raise ValueError("Content is too short to summarize.")
 
     # ---- 2. AI processing ----
     prompt = _build_summarize_prompt(post_content)
