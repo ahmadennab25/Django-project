@@ -1,4 +1,4 @@
-﻿from ..content.content_client import ContentClient
+﻿from ai.content.content_client import ContentClient
 
 MAX_CONTENT_LENGTH = 500
 MIN_INPUT_LENGTH = 20

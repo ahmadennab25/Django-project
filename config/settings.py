@@ -94,6 +94,9 @@ DATABASES = {
         },
     }
 }
+# ---- OpenAI settings ----
+OPENAI_API_KEY = config('OPENAI_API_KEY')
+OPENAI_MODEL = config('OPENAI_MODEL')
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
 
