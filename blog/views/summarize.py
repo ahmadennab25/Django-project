@@ -3,7 +3,7 @@ from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from ..models import Post
-from ai.content.service import summarize_post
+from ai.content.service.summarize import summarize_post
 
 
 @api_view(["POST"])
@@ -29,7 +29,15 @@ def summarize_post_view(request):
     post.summary_generated_at = timezone.now()
     post.save(update_fields=["summary", "summary_generated_at"])
 
-    return Response({
+    return Response(data={
+        "post_id": post.id,
+        "title": post.title,
+        "summary": post.summary,
+        "summary_generated_at": post.summary_generated_at,
+    }, status=status.HTTP_200_OK)
+    post.save(update_fields=["summary", "summary_generated_at"])
+
+    return Response(data={
         "post_id": post.id,
         "title": post.title,
         "summary": post.summary,

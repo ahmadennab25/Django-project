@@ -1,7 +1,8 @@
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from ai.content.service import generate_post
+from ai.content.service.generate import generate_post
+
 
 @api_view(["POST"])
 def generate_post_view(request):

@@ -1,8 +1,5 @@
-from decouple import config
 from openai import OpenAI
-
 from django.conf import settings
-from openai import OpenAI
 
 
 class ContentClient:
